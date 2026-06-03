@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyễn Thị Bảo Ngọc | Logistics & Operations Portfolio</title>
+  <meta name="description" content="Portfolio cá nhân của Nguyễn Thị Bảo Ngọc - Sinh viên Logistics & Quản lý chuỗi cung ứng, định hướng vận hành, điều phối và chăm sóc khách hàng.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --soft-white: #f8fcff;
+      --light-blue: #a7d8f0;
+      --light-blue-2: #dff4ff;
+      --blue: #4ca8d4;
+      --blue-2: #6bb7d6;
+      --deep-blue: #0f4f6f;
+      --navy: #0b3146;
+      --yellow: #ffd84d;
+      --yellow-2: #fff2b3;
+      --yellow-dark: #f2b705;
+      --gray: #f3f6f8;
+      --gray-2: #e5edf2;
+      --text: #1f2a33;
+      --muted: #6b7780;
+      --line: #d8e1e8;
+      --shadow: 0 18px 45px rgba(15, 79, 111, 0.12);
+      --shadow-2: 0 10px 26px rgba(15, 79, 111, 0.08);
+      --radius: 24px;
+      --radius-lg: 34px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      font-family: "Be Vietnam Pro", sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body.lock {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      display: inline-block;
+      background: var(--yellow-2);
+      color: #7a5900;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--deep-blue);
+      line-height: 1.25;
+      letter-spacing: -0.8px;
+    }
+
+    .section-title p {
+      max-width: 760px;
+      margin: 14px auto 0;
+      color: var(--muted);
+    }
+
+    /* =========================
+       SPLASH SCREEN / CONTAINER
+    ========================= */
+
+    .splash {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: radial-gradient(circle at center, #ffffff 0%, #dff4ff 32%, #0f4f6f 100%);
+      display: flex;
+      overflow: hidden;
+    }
+
+    .splash.hide {
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.65s ease;
+    }
+
+    .door {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.1) 0,
+          rgba(255,255,255,0.1) 3px,
+          transparent 3px,
+          transparent 64px
+        ),
+        linear-gradient(135deg, #b5e5f7 0%, #75c9e8 46%, #5eb7d8 100%);
+      box-shadow:
+        inset 0 0 90px rgba(0,0,0,0.18),
+        inset 0 0 0 6px rgba(255,255,255,0.13);
+      transition: transform 1.45s cubic-bezier(.77,0,.18,1);
+      overflow: hidden;
+    }
+
+    .door::before,
+    .door::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 7px;
+      background: rgba(15,79,111,0.22);
+      box-shadow: 0 110px 0 rgba(15,79,111,0.16),
+                  0 220px 0 rgba(15,79,111,0.16),
+                  0 330px 0 rgba(15,79,111,0.16),
+                  0 440px 0 rgba(15,79,111,0.16),
+                  0 550px 0 rgba(15,79,111,0.16),
+                  0 660px 0 rgba(15,79,111,0.16);
+    }
+
+    .door::before {
+      top: 72px;
+    }
+
+    .door::after {
+      bottom: 72px;
+    }
+
+    .door.left {
+      left: 0;
+      border-right: 3px solid rgba(255,255,255,0.9);
+    }
+
+    .door.right {
+      right: 0;
+      border-left: 3px solid rgba(255,255,255,0.9);
+    }
+
+    .splash.open .door.left {
+      transform: translateX(-102%);
+    }
+
+    .splash.open .door.right {
+      transform: translateX(102%);
+    }
+
+    .door-handle {
+      position: absolute;
+      top: 50%;
+      width: 18px;
+      height: 170px;
+      background: rgba(11,49,70,0.55);
+      border-radius: 999px;
+      transform: translateY(-50%);
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,0.24);
+      z-index: 2;
+    }
+
+    .door.left .door-handle {
+      right: 25px;
+    }
+
+    .door.right .door-handle {
+      left: 25px;
+    }
+
+    .warning-stripe {
+      position: absolute;
+      width: 132px;
+      height: 100%;
+      top: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--yellow) 0 18px,
+        #ffffff 18px 36px
+      );
+      opacity: 0.9;
+      box-shadow: 0 0 30px rgba(255,216,77,0.24);
+      z-index: 1;
+    }
+
+    .door.left .warning-stripe {
+      right: 60px;
+    }
+
+    .door.right .warning-stripe {
+      left: 60px;
+    }
+
+    .shipping-label {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(560px, 88%);
+      background: rgba(255,255,255,0.96);
+      border: 3px solid var(--deep-blue);
+      border-radius: 22px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.26);
+      animation: engineShake 0.72s ease-in-out 0.55s 3;
+    }
+
+    .shipping-label .tag {
+      display: inline-block;
+      background: var(--yellow);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 16px;
+      color: #654b00;
+      letter-spacing: 0.6px;
+    }
+
+    .shipping-label h1 {
+      color: var(--deep-blue);
+      font-size: clamp(25px, 5vw, 40px);
+      line-height: 1.25;
+      margin-bottom: 8px;
+      letter-spacing: -0.8px;
+    }
+
+    .shipping-label p {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .label-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 22px 0;
+      text-align: left;
+    }
+
+    .label-cell {
+      border: 1px dashed rgba(15,79,111,0.28);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--deep-blue);
+      font-size: 12px;
+      font-weight: 800;
+      background: #fbfdff;
+    }
+
+    .label-cell small {
+      display: block;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .barcode {
+      height: 46px;
+      margin-top: 20px;
+      background: repeating-linear-gradient(
+        90deg,
+        #111 0 3px,
+        transparent 3px 7px,
+        #111 7px 10px,
+        transparent 10px 16px,
+        #111 16px 19px,
+        transparent 19px 27px
+      );
+      opacity: 0.72;
+      border-radius: 8px;
+    }
+
+    .loader {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(420px, 86%);
+      height: 86px;
+      z-index: 4;
+      color: #fff;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .loader-track {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.34);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .loader-track::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 35%;
+      background: var(--yellow);
+      border-radius: inherit;
+      animation: loadingBar 1.15s ease-in-out infinite;
+    }
+
+    .forklift-loader {
+      position: absolute;
+      bottom: 23px;
+      left: -80px;
+      width: 86px;
+      height: 42px;
+      animation: forkliftMove 2.2s linear infinite;
+    }
+
+    .forklift-body {
+      position: absolute;
+      left: 12px;
+      bottom: 8px;
+      width: 42px;
+      height: 26px;
+      background: var(--yellow);
+      border-radius: 7px 10px 5px 5px;
+      box-shadow: inset 0 -5px 0 rgba(0,0,0,0.08);
+    }
+
+    .forklift-body::before {
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: -12px;
+      width: 18px;
+      height: 18px;
+      border: 4px solid var(--yellow);
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .fork {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      width: 28px;
+      height: 5px;
+      background: #fff;
+      box-shadow: 0 10px 0 #fff;
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: 0;
+      width: 15px;
+      height: 15px;
+      background: var(--navy);
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+
+    .wheel.one { left: 17px; }
+    .wheel.two { left: 48px; }
+
+    @keyframes forkliftMove {
+      from { left: -90px; }
+      to { left: calc(100% + 90px); }
+    }
+
+    @keyframes loadingBar {
+      0% { transform: translateX(-110%); }
+      100% { transform: translateX(310%); }
+    }
+
+    @keyframes engineShake {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0); }
+      22% { transform: translate(-50.6%, -50.1%) rotate(-0.35deg); }
+      48% { transform: translate(-49.4%, -49.9%) rotate(0.35deg); }
+      74% { transform: translate(-50.2%, -50.2%) rotate(-0.2deg); }
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(76,168,212,0.18);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--deep-blue);
+      letter-spacing: -0.2px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: var(--yellow);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(255,216,77,0.45);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--deep-blue);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nav-links a:not(.btn) {
+      position: relative;
+    }
+
+    .nav-links a:not(.btn)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 3px;
+      background: var(--yellow);
+      border-radius: 999px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:not(.btn):hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: var(--yellow);
+      border-radius: 12px;
+      padding: 10px 13px;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    /* =========================
+       BUTTONS / CONVEYOR EFFECT
+    ========================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: 0.25s ease;
+      isolation: isolate;
+      white-space: nowrap;
+    }
+
+    .btn span,
+    .btn strong {
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: #503b00;
+      box-shadow: 0 14px 28px rgba(255,216,77,0.32);
+    }
+
+    .btn-outline {
+      border-color: var(--light-blue);
+      color: var(--deep-blue);
+      background: #fff;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0 15px,
+        rgba(255,255,255,0.44) 15px 27px
+      );
+      transform: translateX(-105%);
+      transition: 0.55s ease;
+      z-index: 1;
+    }
+
+    .btn:hover::before {
+      transform: translateX(105%);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(15,79,111,0.14);
+    }
+
+    .btn .arrow {
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      transition: 0.3s;
+    }
+
+    .btn:hover .arrow {
+      animation: arrowRun 0.8s ease-in-out infinite;
+    }
+
+    @keyframes arrowRun {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(8px); }
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: calc(100vh - 78px);
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 83% 20%, rgba(167,216,240,0.42), transparent 34%),
+        radial-gradient(circle at 18% 92%, rgba(255,216,77,0.18), transparent 28%),
+        linear-gradient(180deg, #ffffff, #f8fcff);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -110px;
+      top: 110px;
+      width: 430px;
+      height: 430px;
+      border: 34px solid rgba(255,216,77,0.22);
+      border-radius: 50%;
+    }
+
+    .route-bg {
+      position: absolute;
+      inset: auto 0 28px 0;
+      height: 110px;
+      background:
+        linear-gradient(90deg, transparent 0 7%, rgba(167,216,240,0.16) 7% 93%, transparent 93%),
+        repeating-linear-gradient(90deg, rgba(15,79,111,0.1) 0 14px, transparent 14px 38px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 52px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #eaf7fc;
+      color: var(--deep-blue);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      font-size: 14px;
+      border: 1px solid rgba(76,168,212,0.18);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1.05;
+      color: var(--deep-blue);
+      margin-bottom: 18px;
+      letter-spacing: -2.2px;
+    }
+
+    .hero h1 span {
+      color: var(--yellow-dark);
+    }
+
+    .hero h2 {
+      font-size: clamp(18px, 2.5vw, 25px);
+      color: var(--text);
+      margin-bottom: 20px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 670px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 660px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid rgba(76,168,212,0.18);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow-2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      background: var(--yellow);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 23px;
+      color: var(--deep-blue);
+      line-height: 1.25;
+    }
+
+    .stat-card span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .profile-card {
+      position: relative;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(76,168,212,0.22);
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 2px dashed rgba(15,79,111,0.12);
+      border-radius: 25px;
+      pointer-events: none;
+    }
+
+    .profile-photo {
+      height: 440px;
+      border-radius: 27px;
+      background:
+        linear-gradient(135deg, rgba(167,216,240,0.28), rgba(255,216,77,0.15)),
+        url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-photo::after {
+      content: "THAY ẢNH CHÂN DUNG TẠI ĐÂY";
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(255,255,255,0.94);
+      color: var(--deep-blue);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .id-card {
+      position: absolute;
+      left: -22px;
+      bottom: 34px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      border-left: 8px solid var(--yellow);
+      max-width: 262px;
+    }
+
+    .id-card strong {
+      display: block;
+      color: var(--deep-blue);
+    }
+
+    .id-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini-ship {
+      position: absolute;
+      top: -22px;
+      right: 28px;
+      width: 90px;
+      height: 54px;
+      background: var(--yellow);
+      border-radius: 20px 20px 10px 10px;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      box-shadow: var(--shadow-2);
+      animation: floatShip 3.4s ease-in-out infinite;
+    }
+
+    @keyframes floatShip {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .about-card {
+      background: #f8fcff;
+      border: 1px solid rgba(76,168,212,0.16);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-2);
+    }
+
+    .about-card h3 {
+      color: var(--deep-blue);
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .education-box {
+      background:
+        linear-gradient(135deg, rgba(15,79,111,0.96), rgba(11,49,70,0.98)),
+        var(--deep-blue);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      box-shadow: var(--shadow);
+    }
+
+    .education-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent 0 30px,
+        rgba(255,255,255,0.05) 30px 42px
+      );
+    }
+
+    .education-box::after {
+      content: "";
+      position: absolute;
+      right: -48px;
+      bottom: -48px;
+      width: 180px;
+      height: 180px;
+      background: var(--yellow);
+      border-radius: 50%;
+      opacity: 0.9;
+    }
+
+    .education-box small {
+      color: var(--yellow);
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    .education-box h3 {
+      font-size: 28px;
+      margin: 10px 0;
+      position: relative;
+      z-index: 1;
+      line-height: 1.3;
+    }
+
+    .education-box p {
+      position: relative;
+      z-index: 1;
+      opacity: 0.92;
+    }
+
+    .about-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .about-tags span {
+      background: #fff4c2;
+      color: #725500;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       TIMELINE / TRACKING ROUTE
+    ========================= */
+
+    .timeline-section {
+      background:
+        radial-gradient(circle at 0% 20%, rgba(167,216,240,0.28), transparent 28%),
+        linear-gradient(180deg, #f8fcff, #ffffff);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 920px;
+      margin: auto;
+      padding-bottom: 8px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 25px;
+      width: 5px;
+      height: 100%;
+      background: var(--line);
+      border-radius: 999px;
+    }
+
+    .timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 25px;
+      width: 5px;
+      height: 0;
+      background: linear-gradient(180deg, var(--light-blue), var(--yellow));
+      border-radius: 999px;
+      transition: height 0.2s;
+    }
+
+    .checkpoint {
+      position: relative;
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .dot {
+      width: 56px;
+      height: 56px;
+      background: #fff;
+      border: 4px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      z-index: 2;
+      transition: 0.35s;
+      box-shadow: var(--shadow-2);
+    }
+
+    .checkpoint.active .dot {
+      border-color: var(--yellow);
+      background: var(--yellow);
+      box-shadow: 0 0 0 8px rgba(255,216,77,0.25), var(--shadow-2);
+      animation: checkpointPulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes checkpointPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    .checkpoint-card {
+      background: #fff;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(76,168,212,0.17);
+      box-shadow: var(--shadow-2);
+      transform: translateY(18px);
+      opacity: 0.76;
+      transition: 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .checkpoint-card::after {
+      content: "ARRIVED";
+      position: absolute;
+      top: 18px;
+      right: -90px;
+      color: rgba(15,79,111,0.05);
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      transform: rotate(-8deg);
+      transition: 0.35s;
+    }
+
+    .checkpoint.active .checkpoint-card {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .checkpoint.active .checkpoint-card::after {
+      right: 22px;
+    }
+
+    .checkpoint-card .status {
+      display: inline-block;
+      background: #fff4c2;
+      color: #725500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .checkpoint-card h3 {
+      color: var(--deep-blue);
+      font-size: 24px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .checkpoint-card p {
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .task-list {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .task-list div {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .task-list div::before {
+      content: "✓";
+      color: var(--yellow-dark);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    /* =========================
+       ACHIEVEMENT / STAMP
+    ========================= */
+
+    .achievement {
+      background:
+        radial-gradient(circle at 15% 30%, rgba(255,216,77,0.23), transparent 25%),
+        radial-gradient(circle at 92% 78%, rgba(167,216,240,0.34), transparent 28%),
+        #fff;
+    }
+
+    .achievement-card {
+      max-width: 820px;
+      margin: auto;
+      background: #fff;
+      border-radius: 34px;
+      border: 2px solid rgba(76,168,212,0.22);
+      box-shadow: var(--shadow);
+      padding: 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .achievement-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent 0 24px,
+        rgba(167,216,240,0.15) 24px 36px
+      );
+      opacity: 0.75;
+    }
+
+    .achievement-card::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      border: 32px solid rgba(255,216,77,0.18);
+      left: -70px;
+      bottom: -70px;
+    }
+
+    .achievement-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .achievement-number {
+      font-size: clamp(76px, 14vw, 138px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--yellow-dark);
+      letter-spacing: -7px;
+      margin-bottom: 14px;
+      text-shadow: 0 12px 22px rgba(255,216,77,0.25);
+    }
+
+    .achievement-card h3 {
+      color: var(--deep-blue);
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .achievement-card p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: auto;
+    }
+
+    .stamp {
+      position: absolute;
+      top: -90px;
+      right: 48px;
+      z-index: 3;
+      transform: rotate(-14deg) scale(0.82);
+      opacity: 0;
+      border: 6px solid var(--yellow-dark);
+      color: var(--yellow-dark);
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-size: 24px;
+      font-weight: 900;
+      background: rgba(255,255,255,0.88);
+      transition: 0.34s cubic-bezier(.2,1.4,.4,1);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+    }
+
+    .achievement-card:hover .stamp {
+      top: 38px;
+      opacity: 1;
+      transform: rotate(-14deg) scale(1);
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills {
+      background: #f8fcff;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .skill-panel {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow-2);
+      border: 1px solid rgba(76,168,212,0.16);
+    }
+
+    .skill-panel h3 {
+      color: var(--deep-blue);
+      font-size: 24px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-item {
+      margin-bottom: 22px;
+    }
+
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 13px;
+      background: #e8eef2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--light-blue), var(--yellow));
+      border-radius: 999px;
+      transition: width 1.2s ease;
+    }
+
+    .skill-panel.show .bar span {
+      width: var(--w);
+    }
+
+    /* =========================
+       PORTFOLIO
+    ========================= */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .portfolio-card {
+      min-height: 238px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(167,216,240,0.52), rgba(255,216,77,0.3)),
+        #fff;
+      border: 1px dashed rgba(15,79,111,0.28);
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .portfolio-card::before {
+      content: "UPLOAD";
+      position: absolute;
+      top: 18px;
+      right: -42px;
+      background: var(--yellow);
+      color: #654b00;
+      font-weight: 900;
+      padding: 8px 48px;
+      transform: rotate(35deg);
+      font-size: 12px;
+      box-shadow: 0 8px 18px rgba(255,216,77,0.26);
+    }
+
+    .portfolio-card::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 24px;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.8);
+      box-shadow: inset 0 0 0 2px rgba(15,79,111,0.08);
+    }
+
+    .portfolio-card:nth-child(1)::after { content: "🎤"; display: grid; place-items: center; font-size: 22px; }
+    .portfolio-card:nth-child(2)::after { content: "📱"; display: grid; place-items: center; font-size: 22px; }
+    .portfolio-card:nth-child(3)::after { content: "📊"; display: grid; place-items: center; font-size: 22px; }
+    .portfolio-card:nth-child(4)::after { content: "🚚"; display: grid; place-items: center; font-size: 22px; }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .portfolio-card h3 {
+      color: var(--deep-blue);
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .portfolio-card p {
+      color: var(--muted);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      background: linear-gradient(180deg, #ffffff, #eaf7fc);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .contact-info,
+    .contact-form {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(76,168,212,0.18);
+    }
+
+    .contact-info h3,
+    .contact-form h3 {
+      color: var(--deep-blue);
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      background: #fff4c2;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 42px;
+    }
+
+    .contact-info strong {
+      color: var(--deep-blue);
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(76,168,212,0.26);
+      border-radius: 16px;
+      padding: 15px 16px;
+      font-family: inherit;
+      outline: none;
+      transition: 0.25s;
+      background: #fbfdff;
+      color: var(--text);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(167,216,240,0.35);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    footer {
+      background: var(--deep-blue);
+      color: #fff;
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    footer span {
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    /* =========================
+       FLOATING CONTACT
+    ========================= */
+
+    .floating-contact {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 950;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-contact a {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: var(--yellow);
+      color: var(--navy);
+      box-shadow: 0 12px 26px rgba(15,79,111,0.16);
+      font-size: 21px;
+      transition: 0.25s;
+      border: 2px solid rgba(255,255,255,0.8);
+    }
+
+    .floating-contact a:hover {
+      transform: translateY(-5px) scale(1.04);
+    }
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.72s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 950px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 5%;
+        border-bottom: 1px solid rgba(76,168,212,0.18);
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+        box-shadow: 0 16px 28px rgba(15,79,111,0.08);
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .skills-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 72px 0;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-photo {
+        height: 370px;
+      }
+
+      .id-card {
+        left: 18px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .warning-stripe {
+        width: 92px;
+      }
+
+      .door.left .warning-stripe {
+        right: 52px;
+      }
+
+      .door.right .warning-stripe {
+        left: 52px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 72px 0;
+      }
+
+      .shipping-label {
+        padding: 22px;
+      }
+
+      .label-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .warning-stripe {
+        width: 62px;
+      }
+
+      .door.left .warning-stripe {
+        right: 42px;
+      }
+
+      .door.right .warning-stripe {
+        left: 42px;
+      }
+
+      .door-handle {
+        height: 126px;
+        width: 14px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.2px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .checkpoint {
+        grid-template-columns: 52px 1fr;
+        gap: 12px;
+      }
+
+      .dot {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+      }
+
+      .timeline::before,
+      .timeline-progress {
+        left: 21px;
+      }
+
+      .achievement-card {
+        padding: 36px 22px;
+      }
+
+      .achievement-number {
+        letter-spacing: -4px;
+      }
+
+      .stamp {
+        right: 18px;
+        font-size: 17px;
+        border-width: 4px;
+      }
+
+      .floating-contact {
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .floating-contact a {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .splash {
+        display: none !important;
+      }
+
+      body.lock {
+        overflow: auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="lock">
+
+  <!-- Splash Screen -->
+  <div class="splash" id="splash">
+    <div class="door left">
+      <div class="warning-stripe"></div>
+      <div class="door-handle"></div>
+    </div>
+
+    <div class="door right">
+      <div class="warning-stripe"></div>
+      <div class="door-handle"></div>
+    </div>
+
+    <div class="shipping-label">
+      <span class="tag">SHIPPING LABEL • PORTFOLIO CARGO</span>
+      <h1>Nguyễn Thị Bảo Ngọc</h1>
+      <p>Logistics & Operations Portfolio</p>
+
+      <div class="label-grid">
+        <div class="label-cell">
+          <small>FROM</small>
+          University of Transport HCMC
+        </div>
+        <div class="label-cell">
+          <small>TO</small>
+          Logistics / Operations Role
+        </div>
+        <div class="label-cell">
+          <small>STATUS</small>
+          Ready for New Opportunity
+        </div>
+        <div class="label-cell">
+          <small>PRIORITY</small>
+          High Potential Candidate
+        </div>
+      </div>
+
+      <div class="barcode"></div>
+    </div>
+
+    <div class="loader">
+      <div>Loading candidate profile...</div>
+      <div class="forklift-loader">
+        <div class="forklift-body"></div>
+        <div class="fork"></div>
+        <div class="wheel one"></div>
+        <div class="wheel two"></div>
+      </div>
+      <div class="loader-track"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#home" class="logo">
+        <span class="logo-mark">⚓</span>
+        <span>Bảo Ngọc</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Trang chủ</a>
+        <a href="#about">Giới thiệu</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Liên hệ</a>
+        <a href="cv.pdf" class="btn btn-primary" download><span>Tải CV</span> <span class="arrow">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="route-bg"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <div class="hero-badge">🚢 Logistics • Operations • Coordination</div>
+
+        <h1>Nguyễn Thị <span>Bảo Ngọc</span></h1>
+
+        <h2>Sinh viên Logistics & Quản lý chuỗi cung ứng | Định hướng Vận hành – Điều phối – Chăm sóc khách hàng</h2>
+
+        <p>
+          Tôi là sinh viên chuyên ngành Logistics và Quản lý chuỗi cung ứng tại Đại học Giao thông Vận tải TP.HCM,
+          có nền tảng học thuật về vận hành, điều phối và chuỗi cung ứng. Bên cạnh đó, tôi đã tích lũy kinh nghiệm
+          thực tế trong điều phối xe, quản lý vận hành, chăm sóc khách hàng, content và MC sự kiện.
+        </p>
+
+        <div class="hero-actions">
+          <a href="cv.pdf" class="btn btn-primary" download><span>Tải CV PDF</span> <span class="arrow">→</span></a>
+          <a href="#experience" class="btn btn-outline"><span>Xem hồ sơ kinh nghiệm</span> <span class="arrow">→</span></a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>2023–2026</strong>
+            <span>Logistics & Supply Chain</span>
+          </div>
+          <div class="stat-card">
+            <strong>+60%</strong>
+            <span>KPI tổng nổi bật</span>
+          </div>
+          <div class="stat-card">
+            <strong>O2O</strong>
+            <span>Vận hành Online to Offline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card reveal">
+        <div class="mini-ship">🚢</div>
+        <div class="profile-photo"></div>
+
+        <div class="id-card">
+          <strong>Candidate Profile</strong>
+          <span>Operations • Logistics • Customer Service</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <span>ABOUT ME</span>
+        <h2>Giới thiệu bản thân</h2>
+        <p>Một ứng viên trẻ có nền tảng Logistics, tư duy vận hành và trải nghiệm thực tế trong nhiều môi trường khác nhau.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="education-box reveal">
+          <small>EDUCATION CHECKPOINT</small>
+          <h3>Đại học Giao thông Vận tải TP.HCM</h3>
+          <p>
+            Chuyên ngành: Logistics – Quản lý chuỗi cung ứng<br>
+            Thời gian: 2023 – 2026
+          </p>
+          <br>
+          <p>
+            Định hướng học tập tập trung vào vận hành, điều phối, kho bãi, vận tải và quản lý chuỗi cung ứng.
+          </p>
+        </div>
+
+        <div class="about-card reveal">
+          <h3>Câu chuyện cá nhân</h3>
+          <p>
+            Tôi không chỉ học Logistics trên lý thuyết mà còn chủ động trải nghiệm nhiều công việc thực tế như điều phối xe,
+            quản lý vận hành Spa – Gym – Coffee, chăm sóc khách hàng, quản lý fanpage, viết content và làm MC.
+          </p>
+          <p>
+            Những trải nghiệm này giúp tôi rèn luyện khả năng giao tiếp, xử lý tình huống, làm việc nhóm, quản lý thời gian
+            và thích nghi nhanh với môi trường mới.
+          </p>
+          <p>
+            Mục tiêu nghề nghiệp của tôi là áp dụng kiến thức Logistics vào thực tế, đặc biệt trong các mảng kho bãi,
+            điều phối, vận hành, chăm sóc khách hàng và tối ưu quy trình làm việc.
+          </p>
+
+          <div class="about-tags">
+            <span>Logistics</span>
+            <span>Operations</span>
+            <span>Coordination</span>
+            <span>Customer Service</span>
+            <span>Content & MC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience" class="timeline-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span>TRACKING ROUTE</span>
+        <h2>Lộ trình học tập & kinh nghiệm</h2>
+        <p>Mỗi trải nghiệm được trình bày như một checkpoint trong hành trình phát triển nghề nghiệp.</p>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline-progress" id="timelineProgress"></div>
+
+        <div class="checkpoint reveal">
+          <div class="dot">🎓</div>
+          <div class="checkpoint-card">
+            <span class="status">Checkpoint 01 • Education</span>
+            <h3>Đại học GTVT TP.HCM</h3>
+            <p>
+              Sinh viên chuyên ngành Logistics & Quản lý chuỗi cung ứng, giai đoạn 2023–2026.
+              Tập trung vào kiến thức vận hành, kho bãi, vận tải, điều phối và chuỗi cung ứng.
+            </p>
+            <div class="task-list">
+              <div>Nắm nền tảng về vận hành và chuỗi cung ứng.</div>
+              <div>Định hướng đi sâu vào kho bãi, điều phối và tối ưu quy trình.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint reveal">
+          <div class="dot">🚛</div>
+          <div class="checkpoint-card">
+            <span class="status">Checkpoint 02 • Logistics Coordination</span>
+            <h3>Điều phối xe</h3>
+            <p>
+              Lên lịch vận chuyển, quản lý tài xế, theo dõi tuyến đường và hỗ trợ xử lý các tình huống phát sinh
+              trong quá trình vận hành thực tế.
+            </p>
+            <div class="task-list">
+              <div>Sắp xếp lịch trình vận chuyển theo nhu cầu thực tế.</div>
+              <div>Phối hợp tài xế và theo dõi tiến độ di chuyển.</div>
+              <div>Xử lý tình huống phát sinh linh hoạt.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint reveal">
+          <div class="dot">🏢</div>
+          <div class="checkpoint-card">
+            <span class="status">Checkpoint 03 • Operations & Customer Service</span>
+            <h3>Vận hành Spa – Gym – Coffee</h3>
+            <p>
+              Quản lý fanpage, chăm sóc khách hàng, báo cáo doanh thu và hỗ trợ vận hành O2O.
+              Đây là trải nghiệm giúp phát triển tư duy vận hành và khả năng theo dõi hiệu quả công việc.
+            </p>
+            <div class="task-list">
+              <div>Quản lý fanpage và phản hồi khách hàng.</div>
+              <div>Theo dõi doanh thu, hỗ trợ vận hành online-to-offline.</div>
+              <div>Góp phần tăng KPI tổng 60% so với nhân sự tiền nhiệm.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint reveal">
+          <div class="dot">🎤</div>
+          <div class="checkpoint-card">
+            <span class="status">Checkpoint 04 • Content & MC</span>
+            <h3>Copywriter – Reviewer – MC Host Academy</h3>
+            <p>
+              Viết content, review ẩm thực/mỹ phẩm, dẫn chương trình team building, sự kiện thiện nguyện
+              và các hoạt động Academy.
+            </p>
+            <div class="task-list">
+              <div>Rèn luyện khả năng giao tiếp và làm chủ đám đông.</div>
+              <div>Phát triển tư duy ngôn ngữ, truyền đạt và xử lý tình huống.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievement -->
+  <section class="achievement">
+    <div class="container">
+      <div class="section-title reveal">
+        <span>ACHIEVEMENT</span>
+        <h2>Thành tựu nổi bật</h2>
+      </div>
+
+      <div class="achievement-card reveal">
+        <div class="stamp">DELIVERED</div>
+
+        <div class="achievement-content">
+          <div class="achievement-number">+60%</div>
+          <h3>Tăng KPI tổng so với nhân sự tiền nhiệm</h3>
+          <p>
+            Thông qua việc quản lý fanpage, chăm sóc khách hàng, theo dõi vận hành và hỗ trợ hoạt động online-to-offline,
+            Bảo Ngọc đã góp phần cải thiện hiệu quả công việc và nâng KPI tổng lên 60% so với nhân sự tiền nhiệm.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-title reveal">
+        <span>SKILLS</span>
+        <h2>Kỹ năng chuyên môn & kỹ năng mềm</h2>
+        <p>Các kỹ năng được xây dựng từ nền tảng học thuật và trải nghiệm thực tế trong vận hành, điều phối, chăm sóc khách hàng.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-panel reveal">
+          <h3>🧰 Hard Skills</h3>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Tin học văn phòng</span>
+              <span>90%</span>
+            </div>
+            <div class="bar"><span style="--w: 90%"></span></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Quản lý Fanpage/Content</span>
+              <span>85%</span>
+            </div>
+            <div class="bar"><span style="--w: 85%"></span></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Báo cáo số liệu</span>
+              <span>80%</span>
+            </div>
+            <div class="bar"><span style="--w: 80%"></span></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Điều phối & Theo dõi vận tải</span>
+              <span>82%</span>
+            </div>
+            <div class="bar"><span style="--w: 82%"></span></div>
+          </div>
+        </div>
+
+        <div class="skill-panel reveal">
+          <h3>🤝 Soft Skills</h3>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Giao tiếp & Thuyết trình</span>
+              <span>92%</span>
+            </div>
+            <div class="bar"><span style="--w: 92%"></span></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Xử lý tình huống</span>
+              <span>86%</span>
+            </div>
+            <div class="bar"><span style="--w: 86%"></span></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Làm việc nhóm</span>
+              <span>88%</span>
+            </div>
+            <div class="bar"><span style="--w: 88%"></span></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-head">
+              <span>Khả năng thích nghi nhanh</span>
+              <span>90%</span>
+            </div>
+            <div class="bar"><span style="--w: 90%"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-title reveal">
+        <span>PORTFOLIO</span>
+        <h2>Minh chứng thực tế</h2>
+        <p>Khu vực này dùng để chèn hình ảnh MC, screenshot content fanpage, báo cáo mẫu hoặc hoạt động vận hành thực tế.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal">
+          <div>
+            <h3>Ảnh MC sự kiện</h3>
+            <p>Chèn ảnh dẫn chương trình, team building hoặc thiện nguyện.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card reveal">
+          <div>
+            <h3>Content Fanpage</h3>
+            <p>Chèn screenshot bài viết hoặc nội dung có hiệu quả tốt.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card reveal">
+          <div>
+            <h3>Báo cáo Excel</h3>
+            <p>Chèn báo cáo mẫu đã che thông tin bảo mật.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-card reveal">
+          <div>
+            <h3>Vận hành thực tế</h3>
+            <p>Chèn ảnh hoặc mô tả hoạt động điều phối, CSKH, O2O.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <span>CONTACT</span>
+        <h2>Liên hệ</h2>
+        <p>Sẵn sàng kết nối với cơ hội thực tập, cộng tác hoặc làm việc trong lĩnh vực Logistics, vận hành và chăm sóc khách hàng.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Thông tin liên hệ</h3>
+
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div>
+              <strong>Email</strong><br>
+              <span>baongoc02625@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <strong>Số điện thoại</strong><br>
+              <span>0328520813</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <strong>Khu vực</strong><br>
+              <span>Bình Dương / TP.HCM</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">💼</div>
+            <div>
+              <strong>LinkedIn</strong><br>
+              <span>Thêm đường link LinkedIn tại đây</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal">
+          <h3>Gửi tin nhắn</h3>
+
+          <form onsubmit="sendMessage(event)">
+            <input type="text" id="name" placeholder="Họ và tên" required>
+            <input type="email" id="email" placeholder="Email của bạn" required>
+            <input type="text" id="subject" placeholder="Vị trí hoặc nội dung muốn trao đổi" required>
+            <textarea id="message" placeholder="Tin nhắn" required></textarea>
+
+            <button class="btn btn-primary" type="submit">
+              <span>Gửi liên hệ</span> <span class="arrow">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="floating-contact">
+    <a href="tel:0328520813" aria-label="Gọi điện">☎</a>
+    <a href="mailto:baongoc02625@gmail.com" aria-label="Email">✉</a>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2026 <span>Nguyễn Thị Bảo Ngọc</span> • Logistics & Operations Portfolio
+    </div>
+  </footer>
+
+  <script>
+    // Splash Screen: door opens after load, also unlocks body scroll
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splash");
+
+      setTimeout(() => {
+        splash.classList.add("open");
+      }, 900);
+
+      setTimeout(() => {
+        splash.classList.add("hide");
+        document.body.classList.remove("lock");
+      }, 2500);
+
+      setTimeout(() => {
+        splash.style.display = "none";
+      }, 3250);
+    });
+
+    // If user scrolls/clicks during splash, open faster
+    function skipSplash() {
+      const splash = document.getElementById("splash");
+      if (!splash || splash.style.display === "none") return;
+      splash.classList.add("open");
+      setTimeout(() => {
+        splash.classList.add("hide");
+        document.body.classList.remove("lock");
+      }, 850);
+      setTimeout(() => {
+        splash.style.display = "none";
+      }, 1500);
+    }
+
+    window.addEventListener("wheel", skipSplash, { once: true });
+    window.addEventListener("touchstart", skipSplash, { once: true });
+
+    // Mobile menu
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Reveal animation and skills animation
+    const revealEls = document.querySelectorAll(".reveal");
+    const skillPanels = document.querySelectorAll(".skill-panel");
+    const checkpoints = document.querySelectorAll(".checkpoint");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+
+          if (entry.target.classList.contains("skill-panel")) {
+            entry.target.classList.add("show");
+          }
+        }
+      });
+    }, {
+      threshold: 0.18
+    });
+
+    revealEls.forEach(el => observer.observe(el));
+    skillPanels.forEach(el => observer.observe(el));
+
+    // Timeline progress and checkpoint active
+    const timeline = document.getElementById("timeline");
+    const timelineProgress = document.getElementById("timelineProgress");
+
+    function updateTimeline() {
+      if (!timeline || !timelineProgress) return;
+
+      const rect = timeline.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      let progress = (windowHeight * 0.68 - rect.top) / rect.height;
+      progress = Math.min(Math.max(progress, 0), 1);
+      timelineProgress.style.height = `${progress * 100}%`;
+
+      checkpoints.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top < windowHeight * 0.72) {
+          item.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateTimeline);
+    window.addEventListener("load", updateTimeline);
+
+    // Contact form mailto
+    function sendMessage(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const mailSubject = encodeURIComponent(`[Portfolio Contact] ${subject}`);
+      const mailBody = encodeURIComponent(
+        `Họ tên: ${name}\nEmail: ${email}\n\nNội dung:\n${message}`
+      );
+
+      window.location.href = `mailto:baongoc02625@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+    }
+  </script>
+</body>
+</html>
